@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<project name="Terrain" width=512 height = 512>
+	<assets>
+	
+		<scenes>
+			<scene name="Terrain" type="Scene">	
+				<geometry name = "Grid" type = "GRID" material="terrain" 
+							DIVISIONS=2048 LENGTH=2048 > 
+				</geometry>								
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>
+		
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+				<FOV value="60.0" />
+				<NEAR value="1" FAR="2000.0" />
+				<POSITION x="0" y="100.0" z="00" />
+				<VIEW x="0.0" y="-0.0" z="-1" />
+				<UP x="0" y="1" z="0" />
+			</camera>
+		</cameras>
+		
+		<lights>
+			<light name="Sun" >
+				<DIRECTION x="1.0" y="-1.5" z="-2" />
+			</light>
+		</lights>
+		
+		<materialLibs>
+			<materialLib filename = "terrain.mlib"/>
+		</materialLibs> 
+	</assets>
+	
+	<pipelines>
+		<pipeline name="terrain" default="true">
+			<pass class="default" name="pass1" >
+				<scenes>
+					<scene name="Terrain" />
+				</scenes>
+				<camera name="MainCamera" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+				<materialMaps>
+					<map fromMaterial="terrain" toLibrary="Terrain" toMaterial="terrain" />
+				</materialMaps>
+			</pass>
+			
+		</pipeline>
+	</pipelines>
+	
+	<interface>
+		<window label="Main Window">
+		</window>
+	</interface>
+	
+</project>
