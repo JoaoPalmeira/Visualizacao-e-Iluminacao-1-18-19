@@ -18,9 +18,12 @@ out Data {
 	vec3 normal;
 	vec3 l_dir;
 	vec4 cor;
+	float height;
+	vec2 tc;
+	vec3 eye;
 } DataOut;
 
-//CENAS PARA A COR
+//COR 
 vec4 color(float height, float snow){
 	bool r = height == -5.0;
 	int nr = int(!r);
@@ -237,10 +240,10 @@ void main() {
 	newPos.y = color.a;
 
 	vec3 normal = normalize(cross(z,x));
-
+	DataOut.tc = texCoord0;
 	DataOut.normal = normalize(m_normal * normal);
 	
 	DataOut.l_dir = vec3(normalize(- (m_view * l_dir)));
-
+	DataOut.height = newPos.y;
 	gl_Position = m_pvm * newPos;
 }

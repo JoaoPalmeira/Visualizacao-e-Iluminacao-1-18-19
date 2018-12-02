@@ -1,6 +1,14 @@
 <?xml version="1.0" ?>
 <materialLib name="Terrain">
 
+	<textures>
+		<texture name="snow" 
+			filename="textures/text4.jpg" mipmap=true />
+		<texture name="terraco" 
+			filename="textures/text2.jpg" mipmap=true />
+		<texture name="calhau" 
+			filename="textures/text3.jpg" mipmap=true />
+	</textures>
 
 	<shaders>
 		<shader name="terrain" 	vs = "shaders/terrain.vert" 
@@ -27,16 +35,29 @@
 							 type="LIGHT" context="CURRENT" 
 							 component="DIRECTION" id=0/>
 					 
-					<valueof uniform="heightMap" 		
+					<valueof uniform="snow" 		
 							 type="TEXTURE_BINDING" context="CURRENT"
 							 component="UNIT" id=0 />
+
+					<valueof uniform="terraco" 		
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=1 />
+
+					<valueof uniform="calhau" 		
+							 type="TEXTURE_BINDING" context="CURRENT"
+							 component="UNIT" id=2 />
 
 					<valueof uniform="timer" 		
 							 type="RENDERER" context="CURRENT"
 							 component="TIMER" />
 
 				 </values>
-			</shader>			
+			</shader>
+			<textures>
+				<texture name="snow" UNIT = 0 />
+				<texture name="terraco" UNIT = 1 />
+				<texture name="calhau" UNIT = 2 />
+			</textures>		
 		</material>
 		
 	</materials>
